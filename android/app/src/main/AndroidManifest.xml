@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xmeisterbaelle.studyplan">
    <application
-        android:label="studyplan"
+        android:label="StudyPlan"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
