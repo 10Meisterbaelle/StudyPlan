@@ -50,6 +50,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final _homeworkList = <String>["Test1", "Test2", "Test3"];
 
+  void _editItem(int index) {
+    setState(() {
+      _homeworkList[index] = "Edited";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -74,7 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
-              title: Text(_homeworkList[index])
+              title: Text(_homeworkList[index]),
+              onTap: () {
+                _editItem(index);
+              },
           );
         },
         separatorBuilder: (BuildContext context, int index) {
