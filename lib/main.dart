@@ -99,16 +99,16 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   Widget _buildRow(int index) {
-    final _markedDone = doneHomework.contains(index);
+    final markedDone = doneHomework.contains(index);
     return ListTile(
       title: Text(homeworkList[index]),
       onTap: () => _editItem(index),
       trailing: IconButton(
         icon: Icon(
-          _markedDone ? Icons.check_box : Icons.check_box_outline_blank,
-          color: _markedDone ? Colors.blue : null,
+          markedDone ? Icons.check_box : Icons.check_box_outline_blank,
+          color: markedDone ? Colors.blue : null,
         ),
-        onPressed: () => _markDone(_markedDone, index),
+        onPressed: () => _markDone(markedDone, index),
       ),
     );
   }
