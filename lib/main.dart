@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildBody() {
     return ListView.separated(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.only(top: 8),
         itemBuilder: (BuildContext context, int index) { // Creates items in list
           return ListTile(
               title: Text(homeworkList[index]),
