@@ -12,7 +12,7 @@ class _AddState extends State<Add> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // TODO: Implement input fields
+
         title: Text("Add Homework"),
       ),
       body: _buildBody(),
@@ -21,6 +21,7 @@ class _AddState extends State<Add> {
 
   _buildBody() {
     return const Center(
+      // TODO: Implement input fields
       child: Text("Hello World"),
     );
   }
