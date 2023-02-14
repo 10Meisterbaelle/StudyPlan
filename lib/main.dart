@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:studyplan/add.dart';
 
+final homeworkList = <String>["Test1", "Test2", "Test3"]; // Creates the list of homework
+
 void main() {
   runApp(const MyApp());
 }
@@ -49,13 +51,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _homeworkList = <String>["Test1", "Test2", "Test3"]; // Creates the list of homework
   // TODO: Store list in database
 
   void _editItem(int index) {
     // TODO: Add Reminder Editor
     setState(() {
-      _homeworkList[index] = "Edited";
+      homeworkList[index] = "Edited";
     });
   }
 
@@ -90,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(16),
         itemBuilder: (BuildContext context, int index) { // Creates items in list
           return ListTile(
-              title: Text(_homeworkList[index]),
+              title: Text(homeworkList[index]),
               onTap: () {
                 _editItem(index);
               },
@@ -99,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
         separatorBuilder: (BuildContext context, int index) {
           return const Divider(); // Separates list elements with lines
         },
-        itemCount: _homeworkList.length, // The number of items in the ListView = The number of elements in _homeworkList
+        itemCount: homeworkList.length, // The number of items in the ListView = The number of elements in _homeworkList
     );
   }
 }
