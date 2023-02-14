@@ -3,9 +3,7 @@ import 'package:studyplan/add.dart';
 
 final homeworkList = <String>["Test1", "Test2", "Test3"]; // Creates the list of homework
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -92,9 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
         itemBuilder: (BuildContext context, int index) { // Creates items in list
           return ListTile(
               title: Text(homeworkList[index]),
-              onTap: () {
-                _editItem(index);
-              },
+              onTap: () => _editItem(index),
           );
         },
         separatorBuilder: (BuildContext context, int index) {
