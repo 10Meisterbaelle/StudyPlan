@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: _buildBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: _addItem,
-        tooltip: 'Increment',
+        tooltip: 'Add',
         child: const Icon(Icons.add),
       ),
     );
