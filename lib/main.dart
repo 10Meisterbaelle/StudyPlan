@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildBody() {
     return ListView.separated(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         itemBuilder: (BuildContext context, int index) { // Creates items in list
           return ListTile(
               title: Text(_homeworkList[index]),
@@ -95,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
         separatorBuilder: (BuildContext context, int index) {
-          return Divider(); // Separates list elements with lines
+          return const Divider(); // Separates list elements with lines
         },
         itemCount: _homeworkList.length, // The number of items in the ListView = The number of elements in _homeworkList
     );
