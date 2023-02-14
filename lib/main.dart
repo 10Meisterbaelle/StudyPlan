@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studyplan/add.dart';
 
 void main() {
   runApp(const MyApp());
@@ -60,9 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _addItem() {
     // TODO: Add an item
-    setState(() {
-      _homeworkList.add("lol");
-    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Add()),
+    );
   }
 
   @override
