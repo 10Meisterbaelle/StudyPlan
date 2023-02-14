@@ -58,6 +58,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _addItem() {
+    // TODO: Add an item
+    setState(() {
+      _homeworkList.add("lol");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called.
@@ -68,6 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: _buildBody(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addItem,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
