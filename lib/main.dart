@@ -3,7 +3,7 @@ import 'package:studyplan/add.dart';
 
 final homeworkList = <String>["Test1", "Test2", "Test3", "Test4", "Test5", "Test6", "Test7", "Test8", "Test9", "Test10", "Test11", "Test12", "Test13", "Test14", "Test15", "Test16", "Test17", "Test18", "Test19", "Test20", "Test21", "Test22", "Test23", "Test24", "Test25"]; // Creates the list of homework
 // TODO: Don't forget to remove list items!
-final doneHomework = <String>{};
+final doneHomework = <int>{};
 
 void main() => runApp(const MyApp());
 
@@ -99,9 +99,24 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   Widget _buildRow(int index) {
+    final _markedDone = doneHomework.contains(index);
     return ListTile(
       title: Text(homeworkList[index]),
       onTap: () => _editItem(index),
+      trailing: IconButton(
+        icon: Icon(
+          _markedDone ? Icons.check_box : Icons.check_box_outline_blank,
+          color: _markedDone ? Colors.blue : null,
+        ),
+        onPressed: () => _markDone(_markedDone, index),
+      ),
     );
+  }
+
+  _markDone(bool markedDone, int index) {
+    // TODO: Store in Database
+    setState(() {
+      markedDone ? doneHomework.remove(index) : doneHomework.add(index);
+    });
   }
 }
