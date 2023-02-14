@@ -48,9 +48,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _homeworkList = <String>["Test1", "Test2", "Test3"];
+  final _homeworkList = <String>["Test1", "Test2", "Test3"]; // Creates the list of homework
+  // TODO: Store list in database
 
   void _editItem(int index) {
+    // TODO: Add Reminder Editor
     setState(() {
       _homeworkList[index] = "Edited";
     });
@@ -58,27 +60,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    // This method is rerun every time setState is called.
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: _buildBody(), // This trailing comma makes auto-formatting nicer for build methods.
+      body: _buildBody(),
     );
   }
 
   Widget _buildBody() {
     return ListView.separated(
         padding: EdgeInsets.all(16),
-
-        itemBuilder: (BuildContext context, int index) {
+        itemBuilder: (BuildContext context, int index) { // Creates items in list
           return ListTile(
               title: Text(_homeworkList[index]),
               onTap: () {
@@ -87,9 +83,9 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
         separatorBuilder: (BuildContext context, int index) {
-          return Divider();
+          return Divider(); // Separates list elements with lines
         },
-        itemCount: _homeworkList.length,
+        itemCount: _homeworkList.length, // The number of items in the ListView = The number of elements in _homeworkList
     );
   }
 }
