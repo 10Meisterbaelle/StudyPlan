@@ -20,6 +20,8 @@ class _AddState extends State<Add> {
   }
 
   _buildBody() {
-    return Text("Hello World!");
+    return const Center(
+      child: Text("Hello World"),
+    );
   }
 }
