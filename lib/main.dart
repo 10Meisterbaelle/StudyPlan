@@ -83,8 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _buildBody() {
     return ListView.separated(
         padding: EdgeInsets.all(16),
+
         itemBuilder: (BuildContext context, int index) {
-          return Text(_homeworkList[index]);
+          return ListTile(
+              title: Text(_homeworkList[index])
+          );
         },
         separatorBuilder: (BuildContext context, int index) {
           return Divider();
