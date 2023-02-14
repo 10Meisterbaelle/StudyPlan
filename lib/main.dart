@@ -3,6 +3,7 @@ import 'package:studyplan/add.dart';
 
 final homeworkList = <String>["Test1", "Test2", "Test3", "Test4", "Test5", "Test6", "Test7", "Test8", "Test9", "Test10", "Test11", "Test12", "Test13", "Test14", "Test15", "Test16", "Test17", "Test18", "Test19", "Test20", "Test21", "Test22", "Test23", "Test24", "Test25"]; // Creates the list of homework
 // TODO: Don't forget to remove list items!
+final doneHomework = <String>{};
 
 void main() => runApp(const MyApp());
 
@@ -89,15 +90,18 @@ class _MyHomePageState extends State<MyHomePage> {
     return ListView.separated(
         padding: const EdgeInsets.only(top: 8, bottom: 8),
         itemBuilder: (BuildContext context, int index) { // Creates items in list
-          return ListTile(
-              title: Text(homeworkList[index]),
-              onTap: () => _editItem(index),
-          );
+          return _buildRow(index);
         },
         separatorBuilder: (BuildContext context, int index) {
           return const Divider(); // Separates list elements with lines
         },
         itemCount: homeworkList.length, // The number of items in the ListView = The number of elements in _homeworkList
+    );
+  }
+  Widget _buildRow(int index) {
+    return ListTile(
+      title: Text(homeworkList[index]),
+      onTap: () => _editItem(index),
     );
   }
 }
