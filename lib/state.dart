@@ -24,7 +24,8 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called.
-    return Scaffold( // Contains the app content
+    return Scaffold(
+      // Contains the app content
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -42,34 +43,59 @@ class MyHomePageState extends State<MyHomePage> {
   Widget _buildBody() {
     return ListView.separated(
       padding: const EdgeInsets.only(top: 8, bottom: 8),
-      itemBuilder: (BuildContext context, int index) { // Creates items in list
+      itemBuilder: (BuildContext context, int index) {
+        // Creates items in list
         return _buildRow(index);
       },
       separatorBuilder: (BuildContext context, int index) {
         return const Divider(); // Separates list elements with lines
       },
-      itemCount: homeworkList.length, // The number of items in the ListView = The number of elements in _homeworkList
-    );
-  }
-  Widget _buildRow(int index) {
-    final markedDone = doneHomework.contains(index);
-    return ListTile(
-      title: Text(homeworkList[index]),
-      onTap: () => _editItem(index),
-      trailing: IconButton(
-        icon: Icon(
-          markedDone ? Icons.check_box : Icons.check_box_outline_blank,
-          color: markedDone ? Colors.blue : null,
-        ),
-        onPressed: () => _markDone(markedDone, index),
-      ),
+      itemCount: homeworkList
+          .length, // The number of items in the ListView = The number of elements in _homeworkList
     );
   }
 
-  _markDone(bool markedDone, int index) {
+  Widget _buildRow(int index) {
+    return Dismissible(
+      key: UniqueKey(),
+      background: Container(
+        color: Colors.red,
+        alignment: Alignment.centerLeft,
+        padding: const EdgeInsets.only(left: 30),
+        child: const Icon(Icons.delete),
+      ),
+      secondaryBackground: Container(
+        color: Colors.red,
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.only(right: 30),
+        child: const Icon(Icons.delete),
+      ),
+      child: ListTile(
+        title: Text(homeworkList[index]),
+        onTap: () => _editItem(index),
+      ),
+      onDismissed: (direction) => _deleteItem(index, direction),
+    );
+  }
+
+/*  _markDone(bool markedDone, int index) {
     // TODO: Store in Database
     setState(() {
       markedDone ? doneHomework.remove(index) : doneHomework.add(index);
     });
+  }*/
+
+  void _deleteItem(int index, DismissDirection direction) {
+    final item = homeworkList[index];
+    setState(() {
+      homeworkList.removeAt(index);
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("$item deleted"),
+      ),
+    );
   }
+
+
 }
