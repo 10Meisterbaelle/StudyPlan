@@ -7,6 +7,8 @@ class Add extends StatefulWidget {
 }
 
 class _AddState extends State<Add> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +21,29 @@ class _AddState extends State<Add> {
   }
 
   _buildBody() {
-    return const Center(
-      // TODO: Implement input fields
-      child: Text("Hello World"),
+    return Form(
+      key: _formKey,
+      child: Scrollbar(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              TextFormField(
+                decoration: InputDecoration(
+                  icon: const Icon(Icons.house),
+                  labelText: "Homework Name",
+                ),
+              ),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {  },
+                  child: Text("Add"),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
