@@ -4,10 +4,8 @@ import 'package:studyplan/main.dart';
 import 'editargs.dart';
 
 class Add extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() => _AddState();
-
 }
 
 class _AddState extends State<Add> {
@@ -15,7 +13,8 @@ class _AddState extends State<Add> {
 
   @override
   Widget build(BuildContext context) {
-    final ScreenArguments? args = ModalRoute.of(context)!.settings.arguments as ScreenArguments?;
+    final ScreenArguments? args =
+        ModalRoute.of(context)!.settings.arguments as ScreenArguments?;
     return Scaffold(
       appBar: AppBar(
         title: Text("Add Homework"),

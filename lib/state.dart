@@ -8,13 +8,12 @@ class MyHomePageState extends State<MyHomePage> {
 
   void _editItem(int index) {
     // TODO: Add Reminder Editor
-    Navigator.of(context).pushNamed(
-      "/add",
-      arguments: ScreenArguments(
-          homeworkList[index],
-          index
-      ),
-    ).then((value) => setState(() {}));
+    Navigator.of(context)
+        .pushNamed(
+          "/add",
+          arguments: ScreenArguments(homeworkList[index], index),
+        )
+        .then((value) => setState(() {}));
   }
 
   void _addItem() {
@@ -97,6 +96,4 @@ class MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-
 }
