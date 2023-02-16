@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:studyplan/add.dart';
 
+import 'add.dart';
 import 'state.dart';
 
 final homeworkList = <String>[]; // Creates the list of homework
