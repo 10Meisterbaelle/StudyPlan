@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'add.dart';
+import 'database.dart';
 import 'state.dart';
 
-final homeworkList = <String>[]; // Creates the list of homework
+final StringListDatabase database = StringListDatabase();
+List<String> homeworkList = <String>[]; // Creates the list of homework
 // TODO: Don't forget to remove list items!
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await database.open();
+  runApp(const MyApp());
+}
 final GlobalKey<MyHomePageState> myHomePageKey = GlobalKey<MyHomePageState>();
 
 class MyApp extends StatelessWidget {
@@ -15,6 +21,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final observer = DatabaseLifecycleObserver(database);
+    WidgetsBinding.instance.addObserver(observer);
     return MaterialApp(
       title: 'StudyPlan',
       theme: ThemeData(

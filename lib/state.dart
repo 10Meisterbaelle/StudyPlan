@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:studyplan/editargs.dart';
 
+import 'database.dart';
 import 'main.dart';
 
 class MyHomePageState extends State<MyHomePage> {
   // TODO: Store list in database
+
+  @override
+  void initState() {
+    super.initState();
+    database.open();
+    loadStringList();
+  }
+
+  Future<void> loadStringList() async {
+    final savedStringList = await database.getStringList();
+    if (savedStringList != null) {
+      setState(() {
+        homeworkList = savedStringList;
+      });
+    }
+  }
+
 
   void _editItem(int index) {
     // TODO: Add Reminder Editor
@@ -13,12 +31,17 @@ class MyHomePageState extends State<MyHomePage> {
           "/add",
           arguments: ScreenArguments(homeworkList[index], index),
         )
-        .then((value) => setState(() {}));
+        .then((value) => _saveItems());
   }
 
   void _addItem() {
     // TODO: Add an item
-    Navigator.of(context).pushNamed("/add").then((value) => setState(() {}));
+    Navigator.of(context).pushNamed("/add").then((value) => _saveItems());
+  }
+
+  void _saveItems() async {
+    await database.saveStringList(homeworkList);
+    setState(() {});
   }
 
   @override
@@ -87,9 +110,8 @@ class MyHomePageState extends State<MyHomePage> {
 
   void _deleteItem(int index, DismissDirection direction) {
     final item = homeworkList[index];
-    setState(() {
-      homeworkList.removeAt(index);
-    });
+    homeworkList.removeAt(index);
+    _saveItems();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text("$item deleted"),
