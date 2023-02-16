@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:studyplan/main.dart';
 
+import 'editargs.dart';
+
 class Add extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() => _AddState();
 
@@ -12,16 +15,16 @@ class _AddState extends State<Add> {
 
   @override
   Widget build(BuildContext context) {
+    final ScreenArguments? args = ModalRoute.of(context)!.settings.arguments as ScreenArguments?;
     return Scaffold(
       appBar: AppBar(
-
         title: Text("Add Homework"),
       ),
-      body: _buildBody(),
+      body: _buildBody(args),
     );
   }
 
-  _buildBody() {
+  _buildBody(ScreenArguments? args) {
     return Form(
       key: _formKey,
       child: Scrollbar(
@@ -35,7 +38,11 @@ class _AddState extends State<Add> {
                   labelText: "Homework Name",
                 ),
                 onSaved: (value) {
-                  homeworkList.add(value!);
+                  if (args != null) {
+                    homeworkList[args.index] = value!;
+                  } else {
+                    homeworkList.add(value!);
+                  }
                 },
               ),
               Center(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studyplan/editargs.dart';
 
 import 'main.dart';
 
@@ -7,9 +8,13 @@ class MyHomePageState extends State<MyHomePage> {
 
   void _editItem(int index) {
     // TODO: Add Reminder Editor
-    setState(() {
-      homeworkList[index] = "Edited";
-    });
+    Navigator.of(context).pushNamed(
+      "/add",
+      arguments: ScreenArguments(
+          homeworkList[index],
+          index
+      ),
+    ).then((value) => setState(() {}));
   }
 
   void _addItem() {
