@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studyplan/main.dart';
 
 class Add extends StatefulWidget {
   @override
@@ -33,10 +34,16 @@ class _AddState extends State<Add> {
                   icon: const Icon(Icons.house),
                   labelText: "Homework Name",
                 ),
+                onSaved: (value) {
+                  homeworkList.add(value!);
+                },
               ),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {  },
+                  onPressed: () {
+                    _formKey.currentState!.save();
+                    Navigator.pop(context);
+                  },
                   child: Text("Add"),
                 ),
               )

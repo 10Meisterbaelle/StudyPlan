@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'add.dart';
 import 'main.dart';
 
 class MyHomePageState extends State<MyHomePage> {
@@ -15,10 +14,7 @@ class MyHomePageState extends State<MyHomePage> {
 
   void _addItem() {
     // TODO: Add an item
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => Add()),
-    );
+    Navigator.of(context).pushNamed("/add").then((value) => setState(() {}));
   }
 
   @override
