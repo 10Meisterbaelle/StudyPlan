@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'main.dart';
 import 'editargs.dart';
@@ -45,12 +46,22 @@ class _AddState extends State<Add> {
                     homeworkList.add(value!);
                   }
                 },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a homework name';
+                  }
+                  return null;
+                },
+                maxLength: 100,
+                maxLengthEnforcement: MaxLengthEnforcement.enforced,
               ),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    _formKey.currentState!.save();
-                    Navigator.pop(context);
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      Navigator.pop(context);
+                    }
                   },
                   child: const Text("Add"),
                 ),
