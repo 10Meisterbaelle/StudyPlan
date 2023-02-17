@@ -32,6 +32,7 @@ class StringListDatabase {
 
   Future<void> saveStringList(List<String> strings) async {
     final String stringList = strings.join(';');
+    await _database.delete(tableName);
     await _database.insert(tableName, {'strings': stringList});
   }
 
