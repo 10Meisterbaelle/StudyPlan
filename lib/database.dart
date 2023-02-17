@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class StringListDatabase {
-  static final String tableName = 'string_lists';
+  static const String tableName = 'string_lists';
 
   late Database _database;
 

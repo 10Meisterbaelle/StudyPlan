@@ -13,6 +13,7 @@ void main() async {
   await database.open();
   runApp(const MyApp());
 }
+
 final GlobalKey<MyHomePageState> myHomePageKey = GlobalKey<MyHomePageState>();
 
 class MyApp extends StatelessWidget {
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(title: 'Homework'),
-        '/add': (context) => Add(),
+        '/add': (context) => const Add(),
       },
       // home: const MyHomePage(title: 'Homework'),
     );

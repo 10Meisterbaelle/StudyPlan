@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studyplan/editargs.dart';
 
-import 'database.dart';
 import 'main.dart';
 
 class MyHomePageState extends State<MyHomePage> {
@@ -16,11 +15,9 @@ class MyHomePageState extends State<MyHomePage> {
 
   Future<void> loadStringList() async {
     final savedStringList = await database.getStringList();
-    if (savedStringList != null) {
-      setState(() {
-        homeworkList = savedStringList;
-      });
-    }
+    setState(() {
+      homeworkList = savedStringList;
+    });
   }
 
 

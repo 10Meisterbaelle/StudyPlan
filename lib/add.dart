@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:studyplan/main.dart';
 
+import 'main.dart';
 import 'editargs.dart';
 
 class Add extends StatefulWidget {
+  const Add({super.key});
+
   @override
   State<StatefulWidget> createState() => _AddState();
 }
@@ -17,7 +19,7 @@ class _AddState extends State<Add> {
         ModalRoute.of(context)!.settings.arguments as ScreenArguments?;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Homework"),
+        title: const Text("Add Homework"),
       ),
       body: _buildBody(args),
     );
@@ -32,8 +34,8 @@ class _AddState extends State<Add> {
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                  icon: const Icon(Icons.house),
+                decoration: const InputDecoration(
+                  icon: Icon(Icons.house),
                   labelText: "Homework Name",
                 ),
                 onSaved: (value) {
@@ -50,7 +52,7 @@ class _AddState extends State<Add> {
                     _formKey.currentState!.save();
                     Navigator.pop(context);
                   },
-                  child: Text("Add"),
+                  child: const Text("Add"),
                 ),
               )
             ],
