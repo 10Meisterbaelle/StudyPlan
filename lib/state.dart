@@ -38,6 +38,8 @@ class MyHomePageState extends State<MyHomePage> {
 
   void _saveItems() async {
     await database.saveStringList(homeworkList);
+    await database.close();
+    await database.open();
     setState(() {});
   }
 
