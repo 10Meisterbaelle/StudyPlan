@@ -26,6 +26,7 @@ class StringListDatabase {
       return <String>[];
     }
     final String stringList = maps[0]['strings'];
+
     return stringList.split(';');
   }
 
