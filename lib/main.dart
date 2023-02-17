@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studyplan/edit.dart';
 
 import 'add.dart';
 import 'database.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(title: 'Homework'),
         '/add': (context) => const Add(),
+        '/edit': (context) => const Edit(),
       },
       // home: const MyHomePage(title: 'Homework'),
     );

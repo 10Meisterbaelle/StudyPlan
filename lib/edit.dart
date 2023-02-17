@@ -4,14 +4,14 @@ import 'package:flutter/services.dart';
 import 'main.dart';
 import 'editargs.dart';
 
-class Add extends StatefulWidget {
-  const Add({super.key});
+class Edit extends StatefulWidget {
+  const Edit({super.key});
 
   @override
-  State<StatefulWidget> createState() => _AddState();
+  State<StatefulWidget> createState() => _EditState();
 }
 
-class _AddState extends State<Add> {
+class _EditState extends State<Edit> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -20,7 +20,7 @@ class _AddState extends State<Add> {
         ModalRoute.of(context)!.settings.arguments as ScreenArguments?;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Homework"),
+        title: const Text("Edit Homework"),
       ),
       body: _buildBody(args),
     );
@@ -40,7 +40,7 @@ class _AddState extends State<Add> {
                   labelText: "Homework Name",
                 ),
                 onSaved: (value) {
-                  homeworkList.add(value!);
+                  homeworkList[args.index] = value!;
                 },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -50,6 +50,7 @@ class _AddState extends State<Add> {
                 },
                 maxLength: 100,
                 maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                initialValue: homeworkList[args!.index],
               ),
               Center(
                 child: ElevatedButton(
@@ -59,7 +60,7 @@ class _AddState extends State<Add> {
                       Navigator.pop(context);
                     }
                   },
-                  child: const Text("Add"),
+                  child: const Text("Save"),
                 ),
               )
             ],

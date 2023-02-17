@@ -20,12 +20,11 @@ class MyHomePageState extends State<MyHomePage> {
     });
   }
 
-
   void _editItem(int index) {
     // TODO: Add Reminder Editor
     Navigator.of(context)
         .pushNamed(
-          "/add",
+          "/edit",
           arguments: ScreenArguments(homeworkList[index], index),
         )
         .then((value) => _saveItems());
