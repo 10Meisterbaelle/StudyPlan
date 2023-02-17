@@ -14,3 +14,7 @@ flutter build apk
 ```
 
 The compiled apk file will be located in build/app/outputs/flutter-apk.
+
+## Disclaimer
+
+This app is a school project that I made in 4 days. It contains millions of bugs and is not intended for day to day use.
